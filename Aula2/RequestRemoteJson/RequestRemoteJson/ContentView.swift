@@ -45,11 +45,10 @@ func getJsonForecast() -> String{
         
         let dataReturn = response.value as? [String : Any]
         let mainInfo = dataReturn?["main"] as? [String : Any]
-        //let dataReturn = itemObject?["name"] as! String
         
-        let temp = mainInfo?["temp"] as! String
- //itemObject?["name"]! as Any
-        print(temp)
+        let temp = mainInfo!["temp"]
+ 
+        print(temp as Any)
         temperature = temp
         
     }
