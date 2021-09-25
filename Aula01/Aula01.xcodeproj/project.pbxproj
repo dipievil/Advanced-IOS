@@ -34,7 +34,7 @@
 		C2BCAC4026ED0FA90009BC65 /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
 		C2BCAC4326ED15040009BC65 /* PlacesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesRowView.swift; sourceTree = "<group>"; };
 		C2BCAC4926ED1C000009BC65 /* PlaceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsView.swift; sourceTree = "<group>"; };
-		C2BCAC4D26ED1F5F0009BC65 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		C2BCAC4D26ED1F5F0009BC65 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleImageView.swift; path = Aula01/View/CircleImageView.swift; sourceTree = SOURCE_ROOT; };
 		C2BCAC5026ED21060009BC65 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
