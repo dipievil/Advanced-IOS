@@ -35,7 +35,7 @@ struct ContentView_Previews: PreviewProvider {
 
 func getJsonForecast() -> String{
     var temperature = ""
-    let apiKey = "f9598d041799d05c0ad43bfd44ca305c"
+    let apiKey = $OPEN_WEATHER_MAP_TOKEN 
     let cidade = "Canoas"
     let url = "http://api.openweathermap.org/data/2.5/weather?q=\(cidade)&appid=\(apiKey)&units=metric&lang=pt_br"
     
