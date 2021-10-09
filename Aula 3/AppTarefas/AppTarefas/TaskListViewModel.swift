@@ -19,8 +19,8 @@ class TaskListViewModel: ObservableObject{
         }
     }
     
-    func addTask(newTask: Task){
-        self.taskCellViewModels.append(TaskCellViewModel(cellTask: newTask))
+    func addTask(newListTask: Task){
+        self.taskCellViewModels.append(TaskCellViewModel(cellTask: newListTask))
     }
     
     func removeTasks(atOffsets indexSet: IndexSet){

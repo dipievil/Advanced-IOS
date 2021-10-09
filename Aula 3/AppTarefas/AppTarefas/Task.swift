@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 enum TaskPriority{
     case high
@@ -13,12 +14,12 @@ enum TaskPriority{
     case low
 }
 
-
 struct Task: Identifiable{
-    var id: String = UUID().uuidString
+    var id: String? // = UUID().uuidString
     var title: String
     var priority : TaskPriority
     var completed: Bool
+    //@ServerTimestampBehavior var createdTime: ServerTimestampBehavior
 }
 
 let testDataTasks = [
