@@ -11,17 +11,22 @@ import Foundation
 
 struct ContentView: View {
 
-    @State var txtTemperatura = ""
+    @StateObject var viewModel = ContentViewModel()
+    
+    ///@State var txtTemperatura = ""
     
     var body: some View {
         VStack{
             Text("Previsão do tempo").padding()
-            TextField("temperatura", text: $txtTemperatura).textFieldStyle(RoundedBorderTextFieldStyle())
-
-            Button("Buscar"){
-                self.txtTemperatura = getJsonForecast()
-                print("clicou!")
+            Text(self.viewModel.temperature).padding()
+            
+            Button(action: {
+                self.viewModel.getJsonForecast()
                 
+                ///txtTemperatura = viewModel.temperature
+                print("clicou!")
+            }){
+                Text("Buscar")
             }
         }
     }
@@ -33,25 +38,42 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-func getJsonForecast() -> String{
-    var temperature = ""
-    let apiKey = $OPEN_WEATHER_MAP_TOKEN 
-    let cidade = "Canoas"
-    let url = "http://api.openweathermap.org/data/2.5/weather?q=\(cidade)&appid=\(apiKey)&units=metric&lang=pt_br"
+class ContentViewModel: ObservableObject{
     
-    AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
-                
-        print(response)
-        
-        let dataReturn = response.value as? [String : Any]
-        let mainInfo = dataReturn?["main"] as? [String : Any]
-        
-        let temp = mainInfo!["temp"]
- 
-        print(temp as Any)
-        temperature = temp
-        
+    @Published var temperature: String
+    
+    init(){
+        self.temperature = "-"
     }
-    return temperature
+
+    func getJsonForecast(){
         
+        let apiKey = "f9598d041799d05c0ad43bfd44ca305c"
+        let cidade = "Canoas"
+        let url = "http://api.openweathermap.org/data/2.5/weather?q=\(cidade)&appid=\(apiKey)&units=metric&lang=pt_br"
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default).responseData { (response) in
+           print(response)
+                       
+            if let receivedData = response.data{
+                    
+                do{
+                    if let JSONObj = try JSONSerialization.jsonObject(with: receivedData, options: []) as? [String: Any]{
+                        
+                        if let mainData = JSONObj["main"] as? [String: Any]{
+                            if let val = mainData["temp"]{
+                                let getTemperature = "\(val) Cº"
+                                print("Get " + getTemperature)
+                                self.temperature = getTemperature
+                            }
+                        }
+                    }
+                    
+                } catch {
+                    print("Erro ao tratar dados")
+                }
+            }
+            print("self: " +  self.temperature )
+        }
+    }
 }
