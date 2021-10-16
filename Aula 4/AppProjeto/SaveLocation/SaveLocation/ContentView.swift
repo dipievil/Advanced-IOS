@@ -1,15 +1,15 @@
 //
 //  ContentView.swift
-//  AppOndeEstou
+//  SaveLocation
 //
-//  Created by IOS SENAC on 11/09/21.
+//  Created by IOS SENAC on 16/10/21.
 //
 
 import SwiftUI
 import MapKit
 
 struct ContentView: View {
- 
+       
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
@@ -18,7 +18,6 @@ struct ContentView: View {
             .onAppear{
             viewModel.checkIfLocationServicesIsEnabled()
         }
-        
     }
 }
 

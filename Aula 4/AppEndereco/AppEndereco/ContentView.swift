@@ -12,8 +12,7 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     @State var cep = String()
-    
-    
+        
     var body: some View {
         
         VStack{
